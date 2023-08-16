@@ -116,7 +116,8 @@ class AttorneyFeeUpdater:
                 response = session.post(BASE_URL.format("/Default"),
                                         data=urlencode(payload),
                                         headers=HEADERS,
-                                        params=params)
+                                        params=params,
+                                        timeout=30)
                 
                 if response.ok:
                     self.logger.info("Login success...")
@@ -159,7 +160,8 @@ class AttorneyFeeUpdater:
             try:
                 response = session.get(BASE_URL.format(url_slug),
                                        headers=HEADERS,
-                                       params=params)
+                                       params=params,
+                                       timeout=30)
                 
                 if response.ok:
                     return response
@@ -177,7 +179,8 @@ class AttorneyFeeUpdater:
                 response = session.post(BASE_URL.format(url_slug),
                                         data=urlencode(payload),
                                         headers=HEADERS,
-                                        params=params)
+                                        params=params,
+                                        timeout=30)
                 
                 if response.ok:
                     return response
