@@ -1,6 +1,5 @@
 import re
 import sys
-import json
 import time
 import random
 import threading
@@ -23,7 +22,6 @@ HEADERS = {
     "Cache-Control": "max-age=0",
     "Content-Type": "application/x-www-form-urlencoded",
     "Origin": "https://land.wvsao.gov",
-    # "Referer": "https://land.wvsao.gov/Default?ReturnUrl=%2fportal%2fBUYER%2fDefault",
     "Sec-Fetch-Site": "same-origin",
     "Upgrade-Insecure-Requests": "1",
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 OPR/101.0.0.0"
@@ -138,7 +136,8 @@ class AttorneyFeeUpdater:
                                                  "https": proxy},
                                         verify=False,
                                         data=urlencode(payload),
-                                        params=params)
+                                        params=params,
+                                        timeout=15)
                 
                 if response.ok:
                     self.logger.info("Login success...")
@@ -213,7 +212,8 @@ class AttorneyFeeUpdater:
                                        proxies={"http": self.proxy,
                                                 "https": self.proxy},
                                        verify=False,
-                                       params=params)
+                                       params=params,
+                                       timeout=20)
                 
                 if response.ok:
                     return response
@@ -234,7 +234,8 @@ class AttorneyFeeUpdater:
                                                  "https": self.proxy},
                                         verify=False,
                                         params=params,
-                                        data=urlencode(payload))
+                                        data=urlencode(payload),
+                                        timeout=20)
                 
                 if response.ok:
                     return response
@@ -283,7 +284,7 @@ class AttorneyFeeUpdater:
         """Entry point to the updater"""
         session, payload = self.__login()
 
-        for item in self.cert_list[9:]:
+        for item in self.cert_list:
             cert_no = item["Cert No"]
 
             try:
