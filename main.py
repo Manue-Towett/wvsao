@@ -1,9 +1,7 @@
 import re
 import sys
-import json
 import time
 import random
-import threading
 import configparser
 from typing import Optional
 from urllib.parse import urlencode
@@ -23,7 +21,6 @@ HEADERS = {
     "Cache-Control": "max-age=0",
     "Content-Type": "application/x-www-form-urlencoded",
     "Origin": "https://land.wvsao.gov",
-    # "Referer": "https://land.wvsao.gov/Default?ReturnUrl=%2fportal%2fBUYER%2fDefault",
     "Sec-Fetch-Site": "same-origin",
     "Upgrade-Insecure-Requests": "1",
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 OPR/101.0.0.0"
@@ -82,41 +79,25 @@ class AttorneyFeeUpdater:
         self.queue = []
         self.updated = []
         self.crawled = []
-        self.proxies = []
         self.properties = {}
 
         self.cert_list = self.__read_csv()
-
-        threading.Thread(target=self.fetch_proxies, daemon=True).start()
     
     def __login(self) -> tuple[requests.Session, dict[str, str]]:
         """Logs into https://land.wvsao.gov"""
-        while not len(self.proxies):pass
-
         while True:
             try:
                 self.logger.info("Logging into wvsao...")
 
                 session = requests.Session()
 
-                proxy = random.choice(self.proxies)
-
-                response = session.get(BASE_URL.format("/Default"), 
-                                       headers=HEADERS,
-                                       proxies={"http": proxy,
-                                                "https": proxy},
-                                    timeout=10,
-                                    verify=False)
-                
-                if not response.ok: continue
+                response = self.__get_request("/Default", session)
 
                 soup = BeautifulSoup(response.text, "html.parser")
 
                 form = soup.select_one("form#form1")
 
                 if form is None: continue
-
-                self.logger.info("Init success...")
                     
                 payload = {}
 
@@ -125,19 +106,16 @@ class AttorneyFeeUpdater:
                         payload[field["name"]] = field["value"]
                     except:pass
                 
-                user = {"ctl00$MainContent$landLogin$UserName": "pivotcapital@lmxmail.com",
-                        "ctl00$MainContent$landLogin$Password": "G!4H$d!mDF&Rge23"}
+                user = {"ctl00$MainContent$landLogin$UserName": USERNAME,
+                        "ctl00$MainContent$landLogin$Password": PASSWORD}
                 
                 payload.update(user)
 
                 params = {"ReturnUrl": "/portal/BUYER/"}
 
                 response = session.post(BASE_URL.format("/Default"),
-                                        headers=HEADERS,
-                                        proxies={"http": proxy,
-                                                 "https": proxy},
-                                        verify=False,
                                         data=urlencode(payload),
+                                        headers=HEADERS,
                                         params=params)
                 
                 if response.ok:
@@ -148,12 +126,10 @@ class AttorneyFeeUpdater:
                     self.logger.info(f"Properties found on wvsao: {len(self.properties)}")
 
                     payload = self.__extract_payload(response)
-
-                    self.proxy = proxy
                     
                     return session, payload
 
-            except: self.logger.error("")
+            except: self.logger.warn("Login failed! Retrying...")
     
     def __read_csv(self) -> list[dict[str, str]]:
         """Reads the input csv file containing cert numbers"""
@@ -174,33 +150,6 @@ class AttorneyFeeUpdater:
 
         return cert_list
     
-    def fetch_proxies(self) -> None:
-        """Fetches proxies to be used"""
-        while True:
-            try:
-                # self.logger.info("here")
-                response = requests.get("https://sslproxies.org/")
-
-                soup = BeautifulSoup(response.text, "html.parser")
-
-                for row in soup.select("table tbody tr"):
-                    try:
-                        if row.select("td")[2].get_text(strip=True) != "US":
-                            continue
-
-                        self.proxies.append("http://{}:{}".format(
-                            row.select("td")[0].get_text(strip=True),
-                            row.select("td")[1].get_text(strip=True)
-                        ))
-                    except:pass
-            except: self.logger.error("")
-
-            self.proxies = list(set(self.proxies))
-
-            # self.logger.info("Proxies found: {}".format(len(self.proxies)))
-
-            time.sleep(5)
-    
     def __get_request(self, 
                       url_slug: str,
                       session: requests.Session, 
@@ -210,9 +159,6 @@ class AttorneyFeeUpdater:
             try:
                 response = session.get(BASE_URL.format(url_slug),
                                        headers=HEADERS,
-                                       proxies={"http": self.proxy,
-                                                "https": self.proxy},
-                                       verify=False,
                                        params=params)
                 
                 if response.ok:
@@ -229,12 +175,9 @@ class AttorneyFeeUpdater:
         while True:
             try:
                 response = session.post(BASE_URL.format(url_slug),
+                                        data=urlencode(payload),
                                         headers=HEADERS,
-                                        proxies={"http": self.proxy,
-                                                 "https": self.proxy},
-                                        verify=False,
-                                        params=params,
-                                        data=urlencode(payload))
+                                        params=params)
                 
                 if response.ok:
                     return response
@@ -257,7 +200,7 @@ class AttorneyFeeUpdater:
             self.properties[cert_no] = property_id.group(1)
 
     def __extract_payload(self, response: Response) -> dict[str, str]:
-        """"""
+        """Extracts the form fields to be submitted"""
         soup = BeautifulSoup(response.text, "html.parser")
 
         payload = {}
@@ -283,7 +226,7 @@ class AttorneyFeeUpdater:
         """Entry point to the updater"""
         session, payload = self.__login()
 
-        for item in self.cert_list[9:]:
+        for item in self.cert_list:
             cert_no = item["Cert No"]
 
             try:
