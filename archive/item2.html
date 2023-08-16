@@ -1,0 +1,504 @@
+
+
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><script src="/Scripts/modernizr-2.8.3.js"></script>
+<link href="/Content/bootstrap.css" rel="stylesheet"/>
+<link href="/Content/FontAwesomePro/css/all.css" rel="stylesheet"/>
+<link href="/Content/Site.css" rel="stylesheet"/>
+<link href="/Content/Custom.css" rel="stylesheet"/>
+<link href="../../favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <style>
+        /* change the background color - Blue */
+        .navbar-custom {
+            background-color: rgba(125, 95, 74, 100); /* Earthy Color */
+        }
+            /* change the brand and text color */
+            .navbar-custom .navbar-brand,
+            .navbar-custom .navbar-text {
+                color: rgba(255,255,255,.8);
+            }
+            /* change the link color */
+            .navbar-custom .navbar-nav .nav-link {
+                color: rgba(255,255,255,.5);
+            }
+            /* change the color of active or hovered links */
+            .navbar-custom .nav-item.active .nav-link,
+            .navbar-custom .nav-item:focus .nav-link,
+            .navbar-custom .nav-item:hover .nav-link {
+                color: #ffffff;
+            }
+
+        a.navbar-custom:link, a.navbar-custom:visited, a.navbar-custom:active {
+            color: rgba(255,255,255,.5);
+        }
+
+        a.navbar-custom:hover {
+            color: rgba(255,255,255,.8);
+        }
+
+        .megamenu-li {
+            position: static;
+        }
+
+        .megamenu {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            right: 0;
+            padding: 15px;
+        }
+
+        .navbar-span {
+            height: inherit;
+        }
+
+        .nav-link-earthy {
+            background-color: rgba(111, 78, 54, .5); /* Earthy Color */
+            border-radius: 6px;
+            padding: 6px 12px 4px 12px;
+        }
+
+        .nav-link-hamburger {
+            background-color: rgba(255,255,255,.3);
+            border-radius: 6px;
+            padding: 6px 12px 4px 12px;
+        }
+
+        a.navbar-link-hamburger:link, a.navbar-link-hamburger:visited, a.navbar-link-hamburger:active {
+            color: rgba(255,255,255,.4);
+        }
+
+        a.navbar-link-hamburger:hover {
+            color: rgba(111, 78, 54, .3); /* Earthy Color */
+        }
+    </style>
+
+    
+    <style>
+        .full-width {
+            width: 95%;
+            /*overflow-x: scroll;*/
+            /*max-height: 700px;*/
+            /*border:1px solid #f5f5f5;
+            border-radius:2px;*/
+            margin: 0 auto;
+        }
+
+        .narrow-width {
+            width: 59.5%;
+            /*overflow-x: scroll;*/
+            /*max-height: 700px;*/
+            /*border:1px solid #f5f5f5;
+            border-radius:2px;*/
+            margin: 0 auto;
+        }
+
+        .fa-stack[data-count]:after {
+            position: absolute;
+            right: 55%;
+            top: 8%;
+            content: attr(data-count);
+            font-size: 30%;
+            padding: .6em;
+            border-radius: 999px;
+            line-height: .75em;
+            color: white;
+            background: rgba(255,88,88,.75);
+            text-align: center;
+            min-width: 2em;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            max-width: 100%;
+        }
+
+        .dd-list, .amt_input {
+            max-width: 280px;
+        }
+    </style>
+<title>
+	Create Notice to Redeem
+</title></head>
+<body style="padding-top:0px;">
+    <form method="post" action="./NTR" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="dJSA5fBu9RDgGG/dry+eUeMLOyDRrZYjHOdKKPsGqqLH8tHveoUMNLVFp6vMrgEYVakwWmYAnCjk2Y//iXnaJe05cAMQkhC40zJTDxNMEz/GZUoGsyKkR+EizUmX/4qywhrmQjw8za1er4hycgYAN0iPWjy/C38kGutbphwqsgtpzV7DHPLeYbfzlwxrmatgGvvCz3HycV5gP3GyIFeNRZoY+QSccsPwny0SJsTwqDSUSO2D2yyJqBCsAFLFuSQ7UQSiutznx9COmt+3NJNojp6bxqHHrgWi6Bp1V+cO9/2b/JsXP4JTM0aXWbpgI4F9mMAa2eZXsvY0+aOiuQvLddHt0CH4PbEq5xA++9+jpf4k1vFUeISAUBCVfcPiokVG8KsHlvJ1PdANMB8pWD208ooqf7a6Cyb5iqd3z5ZRu8s9p+OzzKiufVfUUNmS9IKaV1Qs66W0zDaHKX7DQKtnL1U5D1FPBW8917dK4Jq3AygxbL0LTB4jf5W8k31iwyCSE4zQ4x38+FX77h4fpj8I0mpLqfJMvzbx31ecFgLjgDpAKq5HHIuml9E69tKKqfdUY3DJ51EV0nSiIrAehADUpxBincaZsSA2ih19b4xyjK/EuosQgOfDU4u8gyyZdt+RyLYXcHl8RuOejTYHT7h04Qa2pg6mt4w8xCIhKKNDPcQt+SaGwLqx/ZM+qVSFAWwDKtFtdGphX1KPdSbNvAk6Fb3I7PbKHrhmPmb1zkj7iw+XPMLUh/p7EB8lnU5KIKGydSFTjXpxPyLqZJe388g41uFDy5VrmgXQyRhQhj/V+W7MZScBmHiB3ELDgLUJjXKb6j+CM8TpCA0d02vy91Rfxq7MgvyCcIhEcbc2OB2VA7i/RoDhr9tPBodmypD4GgUKxrbZl/PsEFBUr722XfPxmtX9d3YdFl+qpmB7vfWvH8CJPZkxbZiOpnim/oT1T4BS4cqnGw9BmNqi3yjph+UF7/p6+KqbA/Xl0L9rTXLe0tvaT1OgymvlRHvUPhMJjmbWi86H7oKwgRPCpnB3Qleg6VpyIY+x4rTQYtPBjQCfVzHB0Nt6O4/42IRMKmpRN6TW2vn2Ktg9xwMvXGYKNYvjtYsfALpNWgHkG4IezthXfkIvFkf/imgO8TIgvfNRZQJf3J3c4iFWfrU4VvgshSXi+0voYLra24dMK3gx5h1fyd3RuKZ3P9WNbf/uZ9b9xZguRrvUr7cH3+3UVcoLpjBAUG9FhMYes9uxorQCdwUf20O3ovuwFy4p7uEBWdDYE4NEn4vdHlD8CEYQZfsIRPoYMnAubasYH8VKYVv7ss+OU3W5ZYNH7ivwaGPWnbM1BxRELVcQBS1uVk0YUOOrex6J3uTheskKzVLruzY8SdE7RdGRnP05msNMQd70duoD2MVU0usx0i/KrvGBl+0/OBhGXxmoNOaeEv6QQ+xdxFMm74zVtK5yjE22At2MGcbnIPGC1DMf72IrA3wHh47I2ceTm0ccBLfFgaEe5uva20d9jXurc1X4loCbLvPZGzxJX7JwtZQJt9LJG3Q6KvY/vPuWiPgy9H/C4ENICAoFOmGmfvSR5kDbgFcDujgh1ASvaKWf/duLWHMesSTYIExVSuSmpbiUX4f42Bsu/UqgFwBuJMMKLUkkE0DL5Ith8Snt5PZnU81QIOVkVnnkKC6AHV/NLqzTSwapl6uimHuldSmdDLIRGao4uOVH8sanNRzSv9DDb0U4hSUhxnPBkt0PfenuPqLsC13im00pwJaWYTTvBY1V6iD4t+iMRP3afiViO6j/JN/A+SSj48UjffRiCQ38A43xseY=" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+
+<script src="/bundles/MsAjaxJs?v=D6VN0fHlwFSIWjbVzi6mZyE9Ls-4LNrSSYVGRU46XF81" type="text/javascript"></script>
+<script src="../../Scripts/jquery-3.3.1.min.js" type="text/javascript"></script>
+<script src="../../Scripts/bootstrap.min.js" type="text/javascript"></script>
+<script src="/bundles/WebFormsJs?v=N8tymL9KraMLGAMFuPycfH3pXe6uUlRXdhtYv8A_jUU1" type="text/javascript"></script>
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="BE651B89" />
+	<input type="hidden" name="__SCROLLPOSITIONX" id="__SCROLLPOSITIONX" value="0" />
+	<input type="hidden" name="__SCROLLPOSITIONY" id="__SCROLLPOSITIONY" value="907" />
+	<input type="hidden" name="__VIEWSTATEENCRYPTED" id="__VIEWSTATEENCRYPTED" value="" />
+	<input type="hidden" name="__PREVIOUSPAGE" id="__PREVIOUSPAGE" value="xkBcsQeet9S7mIMxQGwaXnzYkH0QAETi4zD0KDo8pl5DDxODId-mHepWMDbAv_YmT4ujmRYrSR-ab3vz6gLyjr2lxKY1" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="F8X/F/nFPOtu9P4Ix5I38HXlYXnTI9Ql/04+2HjGwLw4j3ND7c7jF6X4aCY8lh4wGlosRix8Ckc9VWZczftHY7mIt0wygJsE4mqCnKp3EUShc3wuynWG9MD9JW3Jt9bT/qBBiHh8OTaJ5F9tCaEF3Yn9n4TUMQsDPa15+v+XOpBRBBgnKfEH46X2e6fNktwOZQIKvP1+FxvORybKr4gCScC+7I8=" />
+</div>
+        <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ctl06', 'form1', [], [], [], 90, 'ctl00');
+//]]>
+</script>
+
+
+        <script>
+            $(document).ready(function () {
+                $(".megamenu").on("click", function (e) {
+                    e.stopPropagation();
+                });
+            });
+        </script>
+        <div class="navbar navbar-custom navbar-fixed-top sticky-top">
+            <div class="container">
+                <a href="Default" class="navbar-brand" title="Land App Home"><span class="fa-duotone fa-image-landscape navbar-span" style="font-size: 2.25em;"></span></a><span id="EnvironmentLBL" style="color:Red;background-color:#FFFF99;font-weight:bold;"></span>
+               
+        
+                             
+                
+                            <ul class="nav navbar-nav navbar-right" style="color:#FFFFFF; min-width:50%; text-align:right;">
+                                <li>pivotcapital@lmxmail.com</li>
+                            </ul>
+                             <a class="nav-link nav-link-hamburger navbar-toggle navbar-link-hamburger" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-bars navbar-span" style="font-size: 1.5em;"></i></a>
+                <div style="display: block; clear: both; width: 100%;"></div>
+                <ul class="nav navbar-nav mr-auto" style="width: 100%;">
+                    <li class="nav-item dropdown megamenu-li">
+                        <div class="dropdown-menu megamenu" aria-labelledby="dropdown01" style="margin-bottom: 15px;">
+                            <div class="row">
+
+                                
+                                <div class="col-sm-4 col-lg-3 mb-3">
+                                    <h5>Other Stuff</h5>
+                                    <a id="ctl08_ProfileLB" class="dropdown-item" href="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$ctl08$ProfileLB&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, true))">Profile</a>
+                                   <a id="ctl08_LogoutLB" class="dropdown-item" href="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$ctl08$LogoutLB&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, true))">Logout</a>
+                                </div>
+
+                                
+                                <div class="col-sm-6 col-lg-3 mb-3">
+                                   
+
+                                </div>
+
+                            </div>
+                        </div>
+                        </div>
+                    </li>
+                </ul>
+
+                 
+           </div>
+        </div>
+             
+
+                <div class="container body-content pt-3">
+            <div class="form-group" style="margin: 0 auto;">
+                
+<span id="BuyersMenu_smpBack" class="breadcrumb"><a href="#BuyersMenu_smpBack_SkipLink" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">Skip Navigation Links</a><span><a title="Home" href="/portal/BUYER/Default">Home</a></span><span>&#160;/&#160;</span><span class="active">NTR</span><a id="BuyersMenu_smpBack_SkipLink"></a></span>
+            </div>
+        </div>
+
+        <div style="margin: 0 auto; width: 100%;">
+            
+    <script src="../../Scripts/jquery-3.3.1.js"></script>
+    <script type="text/javascript">
+        function DisableBackButton() {
+            window.history.forward()
+        }
+        DisableBackButton();
+        window.onload = DisableBackButton;
+        window.onpageshow = function (evt) { if (evt.persisted) DisableBackButton() }
+        window.onunload = function () { void (0) }
+    </script>
+
+    <div class="full-width">
+        
+
+        <div id="MainContent_FullWidth_divNTRMain">
+            <h1>Notice to Redeem</h1>
+            <div class="form-group">
+                <input type="submit" name="ctl00$MainContent_FullWidth$btnReport" value="Download NTR" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$MainContent_FullWidth$btnReport&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="MainContent_FullWidth_btnReport" class="btn btn-primary" />
+                
+                
+                
+                
+                <input type="submit" name="ctl00$MainContent_FullWidth$btnNTRActivity" value="NTR Activity" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$MainContent_FullWidth$btnNTRActivity&quot;, &quot;&quot;, true, &quot;&quot;, &quot;NTRActivity.aspx&quot;, false, false))" id="MainContent_FullWidth_btnNTRActivity" class="btn btn-primary" />
+                
+            </div>
+
+            
+            
+            <div class="card card-custom mb-4">
+                <div class="card-body">
+                    <table>
+                        <div>
+	<table cellspacing="0" id="MainContent_FullWidth_dvNTRHeader" style="border-collapse:collapse;">
+		<tr>
+			<td>&nbsp;</td><td>
+                                        <tr>
+                                            <td style="width: 250px;"><span class="label-custom">County</span>
+                                            </td>
+                                            <td>
+                                                <span id="MainContent_FullWidth_dvNTRHeader_Label1">WYOMING COUNTY</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="label-custom">Certification Number</span>
+                                            </td>
+                                            <td>
+                                                <span id="MainContent_FullWidth_dvNTRHeader_lblCertSaleNbr">2022-C-000159</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="label-custom">Buyer Name</span>
+                                            </td>
+                                            <td>
+                                                <span id="MainContent_FullWidth_dvNTRHeader_lblBuyerName">PIVOT CAPITAL LLC</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="vertical-align: top"><span class="label-custom">Address</span>
+                                            </td>
+                                            <td>
+                                                <span id="MainContent_FullWidth_dvNTRHeader_lblAddress">PO BOX 284<br /><br />BRAMWELL WV, 24715</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="label-custom">Legal Description</span>
+                                            </td>
+                                            <td>
+                                                <span id="MainContent_FullWidth_dvNTRHeader_lblLegalDescription">0.56 (M)(LESS COAL) INDIAN CREEK  </span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="label-custom">Map Parcel Subparcel Special</span>
+                                            </td>
+                                            <td>
+                                                <span id="MainContent_FullWidth_dvNTRHeader_lblMapParcelSubparcelSpecial">9999-0300-1500-0000</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                
+                                            </td>
+                                        </tr>
+                                    </td>
+		</tr><tr>
+			<td>&nbsp;</td><td>
+                                        <tr id="MainContent_FullWidth_dvNTRHeader_trBillName2">
+				<td>
+                                                
+                                                <span class="label-custom">Billing Name</span>
+                                            </td>
+				<td>
+                                                <span id="MainContent_FullWidth_dvNTRHeader_lblBillName"></span>
+                                            </td>
+			</tr>
+			
+                                    </td>
+		</tr><tr>
+			<td>&nbsp;</td><td>
+                                        <tr id="MainContent_FullWidth_dvNTRHeader_trBillAddr2">
+				<td style="vertical-align: top"><span class="label-custom">Billing Address</span>
+                                            </td>
+				<td>
+                                                <span id="MainContent_FullWidth_dvNTRHeader_lblBillAddr1"></span><br />
+                                                <span id="MainContent_FullWidth_dvNTRHeader_lblBillAddr2"></span>
+                                            </td>
+			</tr>
+			
+                                    </td>
+		</tr><tr>
+			<td>&nbsp;</td><td>
+                                        <tr id="MainContent_FullWidth_dvNTRHeader_trBillCity2">
+				<td><span class="label-custom">Billing City</span>
+                                            </td>
+				<td>
+                                                <span id="MainContent_FullWidth_dvNTRHeader_lblBillCity"></span>
+                                            </td>
+			</tr>
+			
+                                    </td>
+		</tr><tr>
+			<td>&nbsp;</td><td>
+                                        <tr id="MainContent_FullWidth_dvNTRHeader_trBillState2">
+				<td><span class="label-custom">Billing State</span>
+                                            </td>
+				<td>
+                                                <span id="MainContent_FullWidth_dvNTRHeader_lblBillState"></span>
+                                            </td>
+			</tr>
+			
+                                    </td>
+		</tr><tr>
+			<td>&nbsp;</td><td>
+                                        <tr id="MainContent_FullWidth_dvNTRHeader_trBillZip2">
+				<td><span class="label-custom">Billing Zip</span>
+                                            </td>
+				<td>
+                                                <span id="MainContent_FullWidth_dvNTRHeader_lblBillZip"></span>
+                                            </td>
+			</tr>
+			
+                                        <tr id="MainContent_FullWidth_dvNTRHeader_trNTRSubmitted">
+				<td><span class="label-custom">Buyer Submitted NTR<br />
+                                                For Review On</span>
+                                            </td>
+				<td>
+                                                <span id="MainContent_FullWidth_dvNTRHeader_lblNTRSubmitted"></span>
+                                            </td>
+			</tr>
+			
+                                    </td>
+		</tr><tr>
+			<td>&nbsp;</td><td>
+                                        <tr>
+                                            <td id="MainContent_FullWidth_dvNTRHeader_AttFeeInstructions" colspan="2" class="pt-3">
+                                                <div class="pt-3 mb-3 border-top">
+                                                    If an attorney is used, in order to receive reimbursement should that property be redeemed, the attorney must be licensed in the state of West Virginia with an active West Virginia State Bar Number. The amount, which shall be paid by  the redeemer, excluding the interest, for the expenses incurred for the preparation of the list of those to be served with notice, shall not exceed the amount actually incurred by the purchaser or <b>$500.00</b>. The attorney may charge a fee for legal services actually performed and must certify that they conducted an examination to determine the list of those to be served with notice. The State Auditor's Office must receive from the purchaser satisfactory proof of the expenses incurred in preparing the list of those to be served with notice to redeem in the form of any written documentation used for the preparation of the list. In accordance with that requirement, we are requiring copies of either the attorney's title abstract, or copies of their notes on where the names were obtained, including such information as Deed Book and Page Numbers or Lien Book and Page Numbers. An invoice from your attorney by itself is not acceptable proof of the expenses incurred in preparing the list of those to be served with notice under the statutes.
+                                                </div>
+                                            </td>
+			
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" class="py-3">
+                                                <div class="form-inline">
+                                                    <div class="form-group pb-sm-2">
+                                                        <span class="label-custom mr-2">Attorney Fees:</span>
+                                                        
+                                                        <span id="MainContent_FullWidth_dvNTRHeader_lblAttorneyFees" class="pr-3">$500.00</span>
+                                                    </div>
+                                                    <div class="form-group pb-sm-2">
+                                                        
+                                                        <input type="submit" name="ctl00$MainContent_FullWidth$dvNTRHeader$btnUpdateBilling" value="Update NTR Info" id="MainContent_FullWidth_dvNTRHeader_btnUpdateBilling" class="btn btn-primary mr-1" />
+                                                        
+                                                        
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </td>
+		</tr>
+	</table>
+</div>
+                    </table>
+                    <div class="form-group ml-3 pb-1">
+                        <h4>NTR Cost:
+                        <span id="MainContent_FullWidth_lblNTRCost" class="ml-2" style="font-weight: bold">$0.00</span></h4>
+                    </div>
+                    <div class="form-group ml-3 pb-3">
+                        <input type="submit" name="ctl00$MainContent_FullWidth$btnAddNTR" value="Add NTR" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$MainContent_FullWidth$btnAddNTR&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="MainContent_FullWidth_btnAddNTR" class="btn btn-primary" />
+                    </div>
+
+                </div>
+            </div>
+
+            
+
+            
+
+            <div class="d-block">
+                <div class="form-group pb-2">
+                    
+                </div>
+            </div>
+
+            
+
+            <div>
+                <h1>NTR Details</h1>
+                <div>
+
+</div>
+            </div>
+        </div>
+    </div>
+    
+    
+
+        </div>
+
+        <div class="container body-content pt-2">
+
+            
+
+
+            
+            <div style="margin-right: 25px;">
+                <button onclick="topFunction()" id="myBtn" title="Back to Top" class="fa-solid fa-up"></button>
+            </div>
+
+            <footer class="mt-5 text-center">
+                <p>
+                    &copy; 2023 West Virginia State Auditor's Office - County Collections Division<br />
+
+                    Toll Free (888) 509-6568 &nbsp;&nbsp; Mon-Fri (8am to 4pm)<br />
+
+                   
+                    <a href="https://www.wvsao.gov" target="_blank">wvsao.gov</a>
+                </p>
+            </footer>
+        </div>
+    
+
+<script type="text/javascript">
+//<![CDATA[
+
+theForm.oldSubmit = theForm.submit;
+theForm.submit = WebForm_SaveScrollPositionSubmit;
+
+theForm.oldOnSubmit = theForm.onsubmit;
+theForm.onsubmit = WebForm_SaveScrollPositionOnSubmit;
+
+theForm.oldOnLoad = window.onload;
+window.onload = WebForm_RestoreScrollPosition;
+//]]>
+</script>
+</form>
+    <script>
+        //Get the button:
+        mybutton = document.getElementById("myBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        }
+    </script>
+</body>
+</html>

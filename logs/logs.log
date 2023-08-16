@@ -1,0 +1,489 @@
+AttorneyFeeUpdater:INFO - *****Attorney Fee Updater started*****
+AttorneyFeeUpdater:INFO - Reading csv file...
+AttorneyFeeUpdater:INFO - Properties found in csv: 37
+AttorneyFeeUpdater:INFO - Logging into wvsao...
+AttorneyFeeUpdater:ERROR - 
+Traceback (most recent call last):
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connectionpool.py", line 536, in _make_request
+    response = conn.getresponse()
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connection.py", line 461, in getresponse
+    httplib_response = super().getresponse()
+  File "/usr/lib/python3.10/http/client.py", line 1375, in getresponse
+    response.begin()
+  File "/usr/lib/python3.10/http/client.py", line 318, in begin
+    version, status, reason = self._read_status()
+  File "/usr/lib/python3.10/http/client.py", line 279, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/usr/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "/usr/lib/python3.10/ssl.py", line 1274, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/lib/python3.10/ssl.py", line 1130, in read
+    return self._sslobj.read(len, buffer)
+TimeoutError: The read operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connectionpool.py", line 844, in urlopen
+    retries = retries.increment(
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/util/retry.py", line 470, in increment
+    raise reraise(type(error), error, _stacktrace)
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/util/util.py", line 39, in reraise
+    raise value
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connectionpool.py", line 790, in urlopen
+    response = self._make_request(
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connectionpool.py", line 538, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connectionpool.py", line 370, in _raise_timeout
+    raise ReadTimeoutError(
+urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='land.wvsao.gov', port=443): Read timed out. (read timeout=10)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/towett/Documents/Upwork/wvsao/main.py", line 104, in __login
+    response = session.get(BASE_URL.format("/Default"),
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/requests/adapters.py", line 532, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPSConnectionPool(host='land.wvsao.gov', port=443): Read timed out. (read timeout=10)
+AttorneyFeeUpdater:INFO - Logging into wvsao...
+AttorneyFeeUpdater:ERROR - 
+Traceback (most recent call last):
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connectionpool.py", line 776, in urlopen
+    self._prepare_proxy(conn)
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connectionpool.py", line 1041, in _prepare_proxy
+    conn.connect()
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connection.py", line 611, in connect
+    self.sock = sock = self._new_conn()
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connection.py", line 218, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x7f268a18ca60>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+urllib3.exceptions.ProxyError: ('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f268a18ca60>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connectionpool.py", line 844, in urlopen
+    retries = retries.increment(
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/util/retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='land.wvsao.gov', port=443): Max retries exceeded with url: /Default (Caused by ProxyError('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f268a18ca60>: Failed to establish a new connection: [Errno 111] Connection refused')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/towett/Documents/Upwork/wvsao/main.py", line 104, in __login
+    response = session.get(BASE_URL.format("/Default"),
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/requests/adapters.py", line 513, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='land.wvsao.gov', port=443): Max retries exceeded with url: /Default (Caused by ProxyError('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f268a18ca60>: Failed to establish a new connection: [Errno 111] Connection refused')))
+AttorneyFeeUpdater:INFO - Logging into wvsao...
+AttorneyFeeUpdater:ERROR - 
+Traceback (most recent call last):
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connectionpool.py", line 776, in urlopen
+    self._prepare_proxy(conn)
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connectionpool.py", line 1041, in _prepare_proxy
+    conn.connect()
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connection.py", line 611, in connect
+    self.sock = sock = self._new_conn()
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connection.py", line 218, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x7f268a7cee60>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+urllib3.exceptions.ProxyError: ('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f268a7cee60>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connectionpool.py", line 844, in urlopen
+    retries = retries.increment(
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/util/retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='land.wvsao.gov', port=443): Max retries exceeded with url: /Default (Caused by ProxyError('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f268a7cee60>: Failed to establish a new connection: [Errno 111] Connection refused')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/towett/Documents/Upwork/wvsao/main.py", line 104, in __login
+    response = session.get(BASE_URL.format("/Default"),
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/requests/adapters.py", line 513, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='land.wvsao.gov', port=443): Max retries exceeded with url: /Default (Caused by ProxyError('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f268a7cee60>: Failed to establish a new connection: [Errno 111] Connection refused')))
+AttorneyFeeUpdater:INFO - Logging into wvsao...
+AttorneyFeeUpdater:ERROR - 
+Traceback (most recent call last):
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connectionpool.py", line 776, in urlopen
+    self._prepare_proxy(conn)
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connectionpool.py", line 1041, in _prepare_proxy
+    conn.connect()
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connection.py", line 611, in connect
+    self.sock = sock = self._new_conn()
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connection.py", line 212, in _new_conn
+    raise ConnectTimeoutError(
+urllib3.exceptions.ConnectTimeoutError: (<urllib3.connection.HTTPSConnection object at 0x7f268a18ca90>, 'Connection to 209.79.65.132 timed out. (connect timeout=10)')
+
+The above exception was the direct cause of the following exception:
+
+urllib3.exceptions.ProxyError: ('Unable to connect to proxy', ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x7f268a18ca90>, 'Connection to 209.79.65.132 timed out. (connect timeout=10)'))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connectionpool.py", line 844, in urlopen
+    retries = retries.increment(
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/util/retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='land.wvsao.gov', port=443): Max retries exceeded with url: /Default (Caused by ProxyError('Unable to connect to proxy', ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x7f268a18ca90>, 'Connection to 209.79.65.132 timed out. (connect timeout=10)')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/towett/Documents/Upwork/wvsao/main.py", line 104, in __login
+    response = session.get(BASE_URL.format("/Default"),
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/requests/adapters.py", line 513, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='land.wvsao.gov', port=443): Max retries exceeded with url: /Default (Caused by ProxyError('Unable to connect to proxy', ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x7f268a18ca90>, 'Connection to 209.79.65.132 timed out. (connect timeout=10)')))
+AttorneyFeeUpdater:INFO - Logging into wvsao...
+AttorneyFeeUpdater:ERROR - 
+Traceback (most recent call last):
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connectionpool.py", line 776, in urlopen
+    self._prepare_proxy(conn)
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connectionpool.py", line 1041, in _prepare_proxy
+    conn.connect()
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connection.py", line 611, in connect
+    self.sock = sock = self._new_conn()
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connection.py", line 218, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x7f268a5f84f0>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+urllib3.exceptions.ProxyError: ('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f268a5f84f0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connectionpool.py", line 844, in urlopen
+    retries = retries.increment(
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/util/retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='land.wvsao.gov', port=443): Max retries exceeded with url: /Default (Caused by ProxyError('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f268a5f84f0>: Failed to establish a new connection: [Errno 111] Connection refused')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/towett/Documents/Upwork/wvsao/main.py", line 104, in __login
+    response = session.get(BASE_URL.format("/Default"),
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/requests/adapters.py", line 513, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='land.wvsao.gov', port=443): Max retries exceeded with url: /Default (Caused by ProxyError('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f268a5f84f0>: Failed to establish a new connection: [Errno 111] Connection refused')))
+AttorneyFeeUpdater:INFO - Logging into wvsao...
+AttorneyFeeUpdater:ERROR - 
+Traceback (most recent call last):
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connectionpool.py", line 776, in urlopen
+    self._prepare_proxy(conn)
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connectionpool.py", line 1041, in _prepare_proxy
+    conn.connect()
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connection.py", line 611, in connect
+    self.sock = sock = self._new_conn()
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connection.py", line 212, in _new_conn
+    raise ConnectTimeoutError(
+urllib3.exceptions.ConnectTimeoutError: (<urllib3.connection.HTTPSConnection object at 0x7f268a5f8d90>, 'Connection to 13.56.228.242 timed out. (connect timeout=10)')
+
+The above exception was the direct cause of the following exception:
+
+urllib3.exceptions.ProxyError: ('Unable to connect to proxy', ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x7f268a5f8d90>, 'Connection to 13.56.228.242 timed out. (connect timeout=10)'))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connectionpool.py", line 844, in urlopen
+    retries = retries.increment(
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/util/retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='land.wvsao.gov', port=443): Max retries exceeded with url: /Default (Caused by ProxyError('Unable to connect to proxy', ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x7f268a5f8d90>, 'Connection to 13.56.228.242 timed out. (connect timeout=10)')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/towett/Documents/Upwork/wvsao/main.py", line 104, in __login
+    response = session.get(BASE_URL.format("/Default"),
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/requests/adapters.py", line 513, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='land.wvsao.gov', port=443): Max retries exceeded with url: /Default (Caused by ProxyError('Unable to connect to proxy', ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x7f268a5f8d90>, 'Connection to 13.56.228.242 timed out. (connect timeout=10)')))
+AttorneyFeeUpdater:INFO - Logging into wvsao...
+AttorneyFeeUpdater:ERROR - 
+Traceback (most recent call last):
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connectionpool.py", line 776, in urlopen
+    self._prepare_proxy(conn)
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connectionpool.py", line 1041, in _prepare_proxy
+    conn.connect()
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connection.py", line 642, in connect
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connection.py", line 783, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/util/ssl_.py", line 469, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/util/ssl_.py", line 513, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+  File "/usr/lib/python3.10/ssl.py", line 513, in wrap_socket
+    return self.sslsocket_class._create(
+  File "/usr/lib/python3.10/ssl.py", line 1071, in _create
+    self.do_handshake()
+  File "/usr/lib/python3.10/ssl.py", line 1342, in do_handshake
+    self._sslobj.do_handshake()
+TimeoutError: _ssl.c:990: The handshake operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connectionpool.py", line 844, in urlopen
+    retries = retries.increment(
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/util/retry.py", line 470, in increment
+    raise reraise(type(error), error, _stacktrace)
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/util/util.py", line 39, in reraise
+    raise value
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connectionpool.py", line 778, in urlopen
+    self._raise_timeout(
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connectionpool.py", line 370, in _raise_timeout
+    raise ReadTimeoutError(
+urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='land.wvsao.gov', port=443): Read timed out. (read timeout=10)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/towett/Documents/Upwork/wvsao/main.py", line 104, in __login
+    response = session.get(BASE_URL.format("/Default"),
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/requests/adapters.py", line 532, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPSConnectionPool(host='land.wvsao.gov', port=443): Read timed out. (read timeout=10)
+AttorneyFeeUpdater:INFO - Logging into wvsao...
+AttorneyFeeUpdater:ERROR - 
+Traceback (most recent call last):
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connectionpool.py", line 776, in urlopen
+    self._prepare_proxy(conn)
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connectionpool.py", line 1041, in _prepare_proxy
+    conn.connect()
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connection.py", line 611, in connect
+    self.sock = sock = self._new_conn()
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connection.py", line 218, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x7f2689b75630>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+urllib3.exceptions.ProxyError: ('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f2689b75630>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/connectionpool.py", line 844, in urlopen
+    retries = retries.increment(
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/urllib3/util/retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='land.wvsao.gov', port=443): Max retries exceeded with url: /Default (Caused by ProxyError('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f2689b75630>: Failed to establish a new connection: [Errno 111] Connection refused')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/towett/Documents/Upwork/wvsao/main.py", line 104, in __login
+    response = session.get(BASE_URL.format("/Default"),
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/towett/Documents/Upwork/wvsao/env/lib/python3.10/site-packages/requests/adapters.py", line 513, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='land.wvsao.gov', port=443): Max retries exceeded with url: /Default (Caused by ProxyError('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f2689b75630>: Failed to establish a new connection: [Errno 111] Connection refused')))
+AttorneyFeeUpdater:INFO - Logging into wvsao...
+AttorneyFeeUpdater:INFO - Init success...
+AttorneyFeeUpdater:INFO - Login success...
+AttorneyFeeUpdater:INFO - Properties found on wvsao: 349
+AttorneyFeeUpdater:INFO - Property with cert no 2022-C-000565 updated.
+AttorneyFeeUpdater:INFO - Queue: 36 || Crawled: 1
+AttorneyFeeUpdater:INFO - Property with cert no 2022-C-000566 updated.
+AttorneyFeeUpdater:INFO - Queue: 35 || Crawled: 2
+AttorneyFeeUpdater:INFO - Property with cert no 2022-C-000568 updated.
+AttorneyFeeUpdater:INFO - Queue: 34 || Crawled: 3
+AttorneyFeeUpdater:INFO - Property with cert no 2022-C-000569 updated.
+AttorneyFeeUpdater:INFO - Queue: 33 || Crawled: 4
+AttorneyFeeUpdater:INFO - Property with cert no 2022-C-000571 updated.
+AttorneyFeeUpdater:INFO - Queue: 32 || Crawled: 5
+AttorneyFeeUpdater:INFO - Property with cert no 2022-C-000575 updated.
+AttorneyFeeUpdater:INFO - Queue: 31 || Crawled: 6
+AttorneyFeeUpdater:INFO - Property with cert no 2022-C-000009 updated.
+AttorneyFeeUpdater:INFO - Queue: 30 || Crawled: 7
+AttorneyFeeUpdater:INFO - Property with cert no 2022-C-000015 updated.
+AttorneyFeeUpdater:INFO - Queue: 29 || Crawled: 8
+AttorneyFeeUpdater:INFO - Property with cert no 2022-C-000017 updated.
+AttorneyFeeUpdater:INFO - Queue: 28 || Crawled: 9
+AttorneyFeeUpdater:INFO - Property with cert no 2022-C-000021 updated.
+AttorneyFeeUpdater:INFO - Queue: 27 || Crawled: 10
+AttorneyFeeUpdater:INFO - Property with cert no 2022-C-000027 updated.
+AttorneyFeeUpdater:INFO - Queue: 26 || Crawled: 11
+AttorneyFeeUpdater:INFO - Property with cert no 2022-C-000031 updated.
+AttorneyFeeUpdater:INFO - Queue: 25 || Crawled: 12
+AttorneyFeeUpdater:INFO - Property with cert no 2022-C-000032 updated.
+AttorneyFeeUpdater:INFO - Queue: 24 || Crawled: 13
+AttorneyFeeUpdater:INFO - Property with cert no 2022-C-000033 updated.
+AttorneyFeeUpdater:INFO - Queue: 23 || Crawled: 14
+AttorneyFeeUpdater:INFO - Property with cert no 2022-C-000034 updated.
+AttorneyFeeUpdater:INFO - Queue: 22 || Crawled: 15
+AttorneyFeeUpdater:INFO - Property with cert no 2022-C-000035 updated.
+AttorneyFeeUpdater:INFO - Queue: 21 || Crawled: 16
+AttorneyFeeUpdater:INFO - Property with cert no 2022-C-000036 updated.
+AttorneyFeeUpdater:INFO - Queue: 20 || Crawled: 17
+AttorneyFeeUpdater:INFO - Property with cert no 2022-C-000037 updated.
+AttorneyFeeUpdater:INFO - Queue: 19 || Crawled: 18
+AttorneyFeeUpdater:INFO - Property with cert no 2022-C-000038 updated.
+AttorneyFeeUpdater:INFO - Queue: 18 || Crawled: 19
+AttorneyFeeUpdater:INFO - Property with cert no 2022-C-000039 updated.
+AttorneyFeeUpdater:INFO - Queue: 17 || Crawled: 20
+AttorneyFeeUpdater:INFO - Property with cert no 2022-C-000040 updated.
+AttorneyFeeUpdater:INFO - Queue: 16 || Crawled: 21
+AttorneyFeeUpdater:INFO - Property with cert no 2022-C-000053 updated.
+AttorneyFeeUpdater:INFO - Queue: 15 || Crawled: 22
+AttorneyFeeUpdater:INFO - Property with cert no 2022-C-000059 updated.
+AttorneyFeeUpdater:INFO - Queue: 14 || Crawled: 23
+AttorneyFeeUpdater:INFO - Property with cert no 2022-C-000060 updated.
+AttorneyFeeUpdater:INFO - Queue: 13 || Crawled: 24
+AttorneyFeeUpdater:INFO - Property with cert no 2022-C-000066 updated.
+AttorneyFeeUpdater:INFO - Queue: 12 || Crawled: 25
+AttorneyFeeUpdater:INFO - Property with cert no 2022-C-000067 updated.
+AttorneyFeeUpdater:INFO - Queue: 11 || Crawled: 26
+AttorneyFeeUpdater:INFO - Property with cert no 2022-C-000068 updated.
+AttorneyFeeUpdater:INFO - Queue: 10 || Crawled: 27
+AttorneyFeeUpdater:INFO - Property with cert no 2022-C-000069 updated.
+AttorneyFeeUpdater:INFO - Queue: 9 || Crawled: 28
